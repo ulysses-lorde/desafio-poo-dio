@@ -4,10 +4,13 @@ import br.com.dio.desafio.dominio.Mentoria;
 import br.com.dio.desafio.dominio.Dev;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         Curso curso1 = new Curso();
         curso1.setTitulo("Curso java");
         curso1.setDescricao("Descricao curso java");
@@ -41,19 +44,20 @@ public class Main {
         devUlysses.inscreverBootcamp(bootcamp);
         devUlysses.progredir();
         devUlysses.progredir();
+        System.out.println("--");
         System.out.println("Conteudos Inscritos Ulysses: " + devUlysses.getConteudosInscritos());
         System.out.println("Conteudos Concluidos Ulysses: " + devUlysses.getConteudosConcluidos());
         System.out.println("XP: " + devUlysses.calcularTotalXp());
 
-        System.out.println();
+        System.out.println("--------------------");
 
-        Dev devLorde = new Dev();
-        devLorde.setNome("Lorde");
-        devLorde.inscreverBootcamp(bootcamp);
-        System.out.println("Conteudos Inscritos Lorde: " + devLorde.getConteudosInscritos());
-        devLorde.progredir();
-        System.out.println("Conteudos Inscritos Lorde: " + devLorde.getConteudosInscritos());
-        System.out.println("Conteudos Concluidos Lorde: " + devLorde.getConteudosConcluidos());
-        System.out.println("XP: " + devLorde.calcularTotalXp());
+        Dev novoDev = new Dev();
+        System.out.println("Digite Seu Nome: ");
+        novoDev.setNome(scanner.nextLine());
+        System.out.println("Nome do Dev: " + novoDev.getNome());
+        //novoDev.inscreverBootcamp(bootcamp);
+        System.out.printf("Conteudos Inscritos %s: %s\n", novoDev.getNome(), novoDev.getConteudosInscritos());
+        novoDev.progredir();
+        //System.out.println("Concluidos: " + novoDev.getConteudosConcluidos());
     }
 }
